@@ -29,6 +29,9 @@ async function youtube(query, page) {
                     json["estimatedResults"] = data.estimatedResults || "0";
                     let sectionLists = data.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents;
 
+                    sectionLists = sectionLists.filter((sectionList) => {
+                      return sectionList.itemSectionRenderer;
+                    });
                     // Loop through all objects and parse data according to type
                     sectionLists.forEach(sectionList => {
                         sectionList.itemSectionRenderer.contents.forEach(content => {
